@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 		} else {
 			xPos = transform.position.x + (axis * (speed * 0.5f));
 		}
-		currentPos.x = Mathf.Clamp(xPos, -21.3f, 21.3f);
+		currentPos.x = Mathf.Clamp(xPos, Constants.xMin, Constants.xMax);
 		transform.position = currentPos;
 
 		if(touchingPlatform && Input.GetButtonDown("Jump")) {

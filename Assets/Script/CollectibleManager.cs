@@ -18,13 +18,16 @@ public class CollectibleManager : MonoBehaviour {
 		}
 
 		for(int i = 0; i < nrOfCollectibles; i++) {
-			pos = new Vector3(Random.Range(-21.3f, 20), Random.Range(0f, 25f), 0f);
-			Instantiate(prefab, pos, Quaternion.Euler(90f, 0f, 0f));
+			Spawn();
 		}
 	}
 
 	public void Respawn() {
-		pos = new Vector3(Random.Range(-21.3f, 20f), Random.Range(0f, 25f), 0f);
+		Spawn();
+	}
+
+	void Spawn() {
+		pos = new Vector3(Random.Range(Constants.xMin, Constants.xMax), Random.Range(Constants.yMin, Constants.yMax), 0f);
 		Instantiate(prefab, pos, Quaternion.Euler(90f, 0f, 0f));
 	}
 }
