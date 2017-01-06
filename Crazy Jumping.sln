@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{84A1DCCA-6D7F-55F0-C203-E91B43323DB3}") = "Crazy Jumping", "Assembly-CSharp-firstpass.csproj", "{988FFEE9-EFA0-7D16-F8A8-B532C10E719E}"
+EndProject
+Project("{84A1DCCA-6D7F-55F0-C203-E91B43323DB3}") = "Crazy Jumping", "Assembly-CSharp.csproj", "{A447D3E7-3DBA-B7DE-BC33-9E3F0569AD9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{988FFEE9-EFA0-7D16-F8A8-B532C10E719E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988FFEE9-EFA0-7D16-F8A8-B532C10E719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988FFEE9-EFA0-7D16-F8A8-B532C10E719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988FFEE9-EFA0-7D16-F8A8-B532C10E719E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A447D3E7-3DBA-B7DE-BC33-9E3F0569AD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A447D3E7-3DBA-B7DE-BC33-9E3F0569AD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A447D3E7-3DBA-B7DE-BC33-9E3F0569AD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A447D3E7-3DBA-B7DE-BC33-9E3F0569AD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FB382E75-1C94-DC14-717D-344F53598E31}") = "CrazyJumping", "Assembly-CSharp-firstpass.csproj", "{717154CD-3D0F-1693-7FD7-606EA2A21A4C}"
+EndProject
+Project("{FB382E75-1C94-DC14-717D-344F53598E31}") = "CrazyJumping", "Assembly-CSharp.csproj", "{B8D7FBE4-D701-FBDD-E0A2-E1283D7CE11C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{717154CD-3D0F-1693-7FD7-606EA2A21A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717154CD-3D0F-1693-7FD7-606EA2A21A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717154CD-3D0F-1693-7FD7-606EA2A21A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717154CD-3D0F-1693-7FD7-606EA2A21A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D7FBE4-D701-FBDD-E0A2-E1283D7CE11C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D7FBE4-D701-FBDD-E0A2-E1283D7CE11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D7FBE4-D701-FBDD-E0A2-E1283D7CE11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D7FBE4-D701-FBDD-E0A2-E1283D7CE11C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
