@@ -14,7 +14,7 @@ public class PlatformManager : MonoBehaviour {
 	private static float yMin = 0f;
 	private static float yMax = 24f;
 	private static int gridXSize = 5;
-	private static int gridYSize = 7;
+	private static int gridYSize = 4;
 
 	// Use this for initialization
 	void Start () {
@@ -61,7 +61,7 @@ public class PlatformManager : MonoBehaviour {
 		SpawnPlatform(RandomPlatformPosition());
 	}
 
-	float GridPosX(int index) {
+	/*float GridPosX(int index) {
 		float tileSize = (xMax - xMin) / gridXSize;
 		return xMin + index * tileSize;
 	}
@@ -69,19 +69,34 @@ public class PlatformManager : MonoBehaviour {
 	float GridPosY(int index) {
 		float tileSize = (yMax - yMin) / gridYSize;
 		return yMin + index * tileSize;
-	}
+	}*/
 
 	Vector3 RandomPlatformPosition() {
-		float tileSize = (yMax - yMin) / gridYSize;
-		int cell = Mathf.FloorToInt(player.position.y / tileSize);
-		int cellMax = DetermineYRange(cell, true);
-		int cellMin = DetermineYRange(cell, false);
-		float x = GridPosX(Random.Range(0, gridXSize));
-		float y = GridPosY(Random.Range(cellMin, cellMax));
-		return new Vector3(x, y, 0f);
+		//float tileSize = (yMax - yMin) / gridYSize;
+		//int cell = Mathf.FloorToInt(player.position.y / tileSize);
+		//int cellMax = DetermineYRange(cell, true);
+		//int cellMin = DetermineYRange(cell, false);
+		//float x = GridPosX(Random.Range(0, gridXSize));
+		//float y = GridPosY(Random.Range(cellMin, cellMax));
+		float x = Random.Range(xMin, xMax);
+		float y = Random.Range(DetermineMinYRange(), DetermineMaxYRange());
+		return new Vector3(RoundToGrid(x, gridXSize), RoundToGrid(y, gridYSize), 0f);
 	}
 
-	int DetermineYRange(int cell, bool max) {
+	float RoundToGrid(float n, int gridSize) {
+		int quota = Mathf.FloorToInt(n) / gridSize;
+		return (float) quota * gridSize;
+	}
+
+	float DetermineMaxYRange() {
+		return Mathf.Clamp(player.position.y + 10f, yMin, yMax);
+	}
+
+	float DetermineMinYRange() {
+		return Mathf.Clamp(player.position.y - 10f, yMin, yMax);
+	}
+
+	/*int DetermineYRange(int cell, bool max) {
 		if(max) {
 			if(cell+3 <= gridYSize) {
 				return cell+3;
@@ -103,5 +118,5 @@ public class PlatformManager : MonoBehaviour {
 				return cell;
 			}
 		}
-	}
+	}*/
 }
