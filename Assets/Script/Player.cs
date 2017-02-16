@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
 	[Range(0.0f, 2.0f)]
 	public float speed = 0.1f;
 	public Vector3 jumpVelocity;
+	public Animator childAnimator;
+	public AudioClip jumpSFX;
 
 	private Rigidbody rb;
 	private bool touchingPlatform;
@@ -13,12 +15,15 @@ public class Player : MonoBehaviour {
 	private int playerLayer;
 	private int platformLayer;
 	private float axis, xPos, xJump, vy;
+	private bool isRunning = false;
+	private AudioSource audioSrc;
 	
 	void Start() {
-		transform.position = new Vector3(0f, 2f, 0f);
+		//transform.position = new Vector3(0f, 2f, 0f);
 		rb = GetComponent<Rigidbody>();
 		playerLayer = this.gameObject.layer;
 		platformLayer = LayerMask.NameToLayer("Platform");
+		audioSrc = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -26,6 +31,18 @@ public class Player : MonoBehaviour {
 		currentPos = transform.position;
 		axis = Input.GetAxis("Horizontal");
 		vy = rb.velocity.y;
+		childAnimator.SetBool("Grounded", touchingPlatform);
+
+		// Determine if player is running.
+		if(axis != 0) {
+			isRunning = true;
+			transform.rotation = (axis < 0) ? Quaternion.Euler(new Vector3(0.0f, 90.0f, 0.0f)) : Quaternion.Euler(new Vector3(0.0f, -90.0f, 0.0f));
+		} else {
+			isRunning = false;
+			transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
+		}
+
+		childAnimator.SetBool("Running", isRunning);
 
 		if(touchingPlatform) {
 			xPos = transform.position.x + (axis * speed);
@@ -43,7 +60,8 @@ public class Player : MonoBehaviour {
 				xJump = jumpVelocity.x;
 			}
 			rb.AddForce(new Vector3(xJump, jumpVelocity.y, jumpVelocity.z), ForceMode.VelocityChange);
-			//rb.AddForce(jumpVelocity, ForceMode.VelocityChange);
+			childAnimator.SetTrigger("Jumping");
+			audioSrc.PlayOneShot(jumpSFX);
 		}
 
 		Physics.IgnoreLayerCollision(playerLayer, platformLayer, (vy > 0.0f));

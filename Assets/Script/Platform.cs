@@ -5,16 +5,42 @@ public class Platform : MonoBehaviour {
 
 	public float timeUntilDestroy = 5f;
 
+	private Renderer rend;
+	private Color c;
+	private bool fadeStarted = false;
+
+	void Start() {
+		rend = GetComponent<Renderer>();
+		c = rend.material.color;
+	}
+
 	void DestroyPlatform() {
 		Destroy(gameObject);
 		PlatformManager.instance.Respawn();
 	}
 
 	void OnCollisionEnter(Collision other) {
-		float lerp = Mathf.PingPong (Time.time, timeUntilDestroy) / timeUntilDestroy;
-		float alpha = Mathf.Lerp(1f, 0f, lerp) ;
-		//renderer
-      	//renderer.material.color.a = alpha;
+		if(!fadeStarted) {
+      		StartCoroutine(Blink());
+      		fadeStarted = true;
+      	}
 		Invoke("DestroyPlatform", timeUntilDestroy);	
+	}
+
+	IEnumerator Blink() {
+		c.a = 0.8f;
+		rend.material.color = c;
+		yield return new WaitForSeconds(1.0f);
+		c.a = 0.6f;
+		rend.material.color = c;
+		yield return new WaitForSeconds(1.0f);
+		c.a = 0.4f;
+		rend.material.color = c;
+		yield return new WaitForSeconds(1.0f);
+		c.a = 0.2f;
+		rend.material.color = c;
+		yield return new WaitForSeconds(1.0f);
+		c.a = 0.0f;
+		rend.material.color = c;
 	}
 }

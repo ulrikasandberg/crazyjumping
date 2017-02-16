@@ -6,5 +6,6 @@ public class Deathzone : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		Destroy(other.gameObject);
+		GameController.gc.Restart();
 	}
 }
